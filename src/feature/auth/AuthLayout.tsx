@@ -12,14 +12,14 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({
   fullWidthSide = false,
 }) => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="">
       {sideComponent ? (
         <div
-          className={`w-full max-w-6xl mx-auto ${fullWidthSide ? "" : "p-6"}`}
+          className={`w-full ${fullWidthSide ? "" : "p-6"}`}
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="md:order-2 hidden md:block">{sideComponent}</div>
-            <div className="md:order-1 flex items-center justify-center">
+            <div className="md:order-1 hidden md:block">{sideComponent}</div>
+            <div className="md:order-2 flex items-center justify-center">
               {children}
             </div>
           </div>

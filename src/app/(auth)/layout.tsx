@@ -17,4 +17,3 @@ export default function RootLayout({
   return <AuthLayout sideComponent={<AuthSide />}>{children}</AuthLayout>;
 }
 
-// className=" min-h-screen w-full flex items-center justify-center lg:py-20 p-4"
