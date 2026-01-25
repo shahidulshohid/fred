@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import PrimaryButton from "@/components/shared/primaryButton/PrimaryButton";
+import Container from "@/lib/Container";
 import { useSignUpMutation } from "@/redux/api/auth/authApi";
 import CustomInput from "@/ui/CustomeInput";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -9,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import * as z from "zod";
+import AuthSide from "./AuthSide";
 
 // Define Zod schema for validation
 const formSchema = z
@@ -79,71 +81,85 @@ export default function SignUpPage() {
   };
 
   return (
-    <div className="w-full lg:min-w-[500px]">
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 w-full">
-        <div className="flex items-center gap-4">
-          {/* First Name Input */}
-          <CustomInput
-            id="firstName"
-            label="First Name"
-            placeholder="John"
-            error={errors.firstName?.message}
-            {...register("firstName")}
-          />
+    <Container>
+      <div className="min-h-screen grid grid-cols-1 md:grid-cols-3 overflow-hidden">
+        <AuthSide />
+        <div className="md:col-span-2 flex items-center justify-center px-6">
+          <div className="max-w-[540px] lg:w-[540px] h-auto mx-auto bg-[#FFF] p-6 rounded-2xl border border-[#6E51E01A] shadow-[0_0_20px_0_rgba(94,95,224,0.1)]">
+            <h3 className="font-semibold text-3xl text-[#252525] mb-4">Create a new account</h3>
+            <p className="text-lg font-semibold text-[#252525] mb-2">I’m a</p>
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 w-full">
+              <div className="flex items-center gap-4">
+                {/* First Name Input */}
+                <CustomInput
+                  id="firstName"
+                  label="First Name"
+                  placeholder="John"
+                  leftIcon={<img src="/authImg/humanIcon.png" alt="icon" className="w-5 h-5" />}
+                  error={errors.firstName?.message}
+                  {...register("firstName")}
+                />
 
-          {/* Last Name Input */}
-          <CustomInput
-            id="lastName"
-            label="Last Name"
-            placeholder="Doe"
-            error={errors.lastName?.message}
-            {...register("lastName")}
-          />
+                {/* Last Name Input */}
+                <CustomInput
+                  id="lastName"
+                  label="Last Name"
+                  placeholder="Doe"
+                  leftIcon={<img src="/authImg/humanIcon.png" alt="icon" className="w-5 h-5" />}
+                  error={errors.lastName?.message}
+                  {...register("lastName")}
+                />
+              </div>
+
+              {/* Company Email Input */}
+              <CustomInput
+                id="email"
+                type="email"
+                label="Email Address"
+                placeholder="example@company.com"
+                leftIcon={<img src="/authImg/mailIcon.png" alt="icon" className="w-5 h-5" />}
+                error={errors.email?.message}
+                {...register("email")}
+              />
+
+              {/* Password Input */}
+              <CustomInput
+                id="password"
+                type="password"
+                label="Password"
+                placeholder="••••••••••"
+                showPasswordToggle={true}
+                error={errors.password?.message}
+                leftIcon={<img src="/authImg/passwordIcon.png" alt="icon" className="w-5 h-5" />}
+                {...register("password")}
+              />
+
+              {/* Confirm Password Input */}
+              <CustomInput
+                id="confirmPassword"
+                type="password"
+                label="Confirm Password"
+                placeholder="••••••••••"
+                showPasswordToggle={true}
+                error={errors.confirmPassword?.message}
+                leftIcon={<img src="/authImg/passwordIcon.png" alt="icon" className="w-5 h-5" />}
+                {...register("confirmPassword")}
+              />
+
+              {/* Sign Up Button */}
+              <PrimaryButton type="submit" loading={isLoading} text="Sign Up" />
+            </form>
+
+            {/* Login Link */}
+            <div className="text-center mb-3 mt-3 text-[16px] text-gray-600">
+              Already have an accoun?{" "}
+              <Link href="/signIn" className="text-primary text-[16px] font-semibold hover:underline">
+                Sign In
+              </Link>
+            </div>
+          </div>
         </div>
-
-        {/* Company Email Input */}
-        <CustomInput
-          id="email"
-          type="email"
-          label="Email Address"
-          placeholder="example@company.com"
-          error={errors.email?.message}
-          {...register("email")}
-        />
-
-        {/* Password Input */}
-        <CustomInput
-          id="password"
-          type="password"
-          label="Password"
-          placeholder="••••••••••"
-          showPasswordToggle={true}
-          error={errors.password?.message}
-          {...register("password")}
-        />
-
-        {/* Confirm Password Input */}
-        <CustomInput
-          id="confirmPassword"
-          type="password"
-          label="Confirm Password"
-          placeholder="••••••••••"
-          showPasswordToggle={true}
-          error={errors.confirmPassword?.message}
-          {...register("confirmPassword")}
-        />
-
-        {/* Sign Up Button */}
-        <PrimaryButton type="submit" loading={isLoading} text="Sign Up" />
-      </form>
-
-      {/* Login Link */}
-      <div className="text-center mb-3 mt-3 text-sm text-gray-600">
-        Are you an individual?{" "}
-        <Link href="/signIn" className="text-primary hover:underline">
-          Sign In as an Individual!
-        </Link>
       </div>
-    </div>
+    </Container>
   );
 }

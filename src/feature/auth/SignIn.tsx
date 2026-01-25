@@ -82,16 +82,16 @@ export default function SignInPage() {
         <AuthSide />
         {/* Right Side Form (2 columns) */}
         <div className="md:col-span-2 flex items-center justify-center px-6">
-          <div className="w-full max-w-lg">
-
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-
+          <div className="max-w-[540px] lg:w-[540px] h-auto mx-auto bg-[#FFF] p-6 rounded-2xl border border-[#6E51E01A] shadow-[0_0_20px_0_rgba(94,95,224,0.1)]">
+            <h3 className="font-semibold text-3xl text-[#252525] mb-4">Welcome Back</h3>
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 w-full">
               {/* Email Input */}
               <CustomInput
                 id="email"
                 type="email"
                 label="Email"
-                placeholder="georgiayoung@example.com"
+                placeholder="Enter your email"
+                leftIcon={<img src="/authImg/mailIcon.png" alt="icon" className="w-5 h-5" />}
                 {...register("email")}
                 error={errors.email?.message}
               />
@@ -101,45 +101,31 @@ export default function SignInPage() {
                 id="password"
                 type="password"
                 label="Password"
-                placeholder="••••••••••"
+                placeholder="Enter your password"
                 showPasswordToggle={true}
                 error={errors.password?.message}
+                leftIcon={<img src="/authImg/passwordIcon.png" alt="icon" className="w-5 h-5" />}
                 {...register("password")}
               />
 
-              {/* Remember Me + Forgot Password */}
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <input
-                    id="rememberMe"
-                    type="checkbox"
-                    {...register("rememberMe")}
-                  />
-                  <label
-                    htmlFor="rememberMe"
-                    className="ml-2 text-sm text-gray-600"
-                  >
-                    Remember Me
-                  </label>
-                </div>
-
+              {/* Remember Me and Forgot Password */}
+              <div className="text-right">
                 <Link
                   href="/forget-password"
-                  className="text-sm text-red-500 hover:underline"
+                  className="text-sm text-[#000000] font-semibold text-[16px] hover:underline"
                 >
-                  Forgot Password?
+                  Reset Password
                 </Link>
               </div>
-
-              {/* Submit Button */}
-              <PrimaryButton
-                type="submit"
-                loading={isLoading}
-                text="Sign In"
-              />
-
+              {/* Login Button */}
+              <PrimaryButton type="submit" loading={isLoading} text="Sign In" />
             </form>
-
+            <div className="text-center mb-3 mt-3 text-[16px] text-gray-600">
+              Don’t have an account?{" "}
+              <Link href="/signUp" className="text-primary text-[16px] font-semibold hover:underline">
+                Sign up
+              </Link>
+            </div>
           </div>
         </div>
 

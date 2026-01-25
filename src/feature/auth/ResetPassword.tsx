@@ -1,15 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import PrimaryButton from "@/components/shared/primaryButton/PrimaryButton";
+import Container from "@/lib/Container";
 import { useResetPasswordMutation } from "@/redux/api/auth/authApi";
 import CustomInput from "@/ui/CustomeInput";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { LuEye, LuEyeOff } from "react-icons/lu";
 import { toast } from "sonner";
 import * as z from "zod";
+import AuthSide from "./AuthSide";
 
 // Define Zod schema for validation
 const formSchema = z
@@ -76,47 +77,54 @@ export default function ResetPasswordPage() {
   };
 
   return (
-    <div className="w-full lg:min-w-[500px]">
-      <div className="flex flex-col items-center mb-8">
-        <h1 className="text-2xl font-bold mb-2">Change New Password!!</h1>
-        <p className="text-gray-500 text-sm text-center">
-          Welcome to Website Name <br />
-          Enter a different password with the previous!
-        </p>
+    <Container>
+      <div className="min-h-screen grid grid-cols-1 md:grid-cols-3 overflow-hidden">
+        <AuthSide />
+        <div className="md:col-span-2 flex items-center justify-center px-6">
+          <div className="max-w-[540px] lg:w-[540px] h-auto mx-auto bg-[#FFF] p-6 rounded-2xl border border-[#6E51E01A] shadow-[0_0_20px_0_rgba(94,95,224,0.1)]">
+            <div className="flex flex-col items-center mb-8">
+              <h1 className="text-2xl font-bold mb-2">Change New Password!!</h1>
+              <p className="text-gray-500 text-sm text-center">
+                Welcome to Website Name <br />
+                Enter a different password with the previous!
+              </p>
+            </div>
+
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 w-full">
+              {/* Password Input */}
+              <CustomInput
+                id="password"
+                type="password"
+                label="Password"
+                placeholder="••••••••••"
+                showPasswordToggle={true}
+                error={errors.password?.message}
+                {...register("password")}
+              />
+
+              {/* Confirm Password Input */}
+              <CustomInput
+                id="confirmPassword"
+                type="password"
+                label="Confirm Password"
+                placeholder="••••••••••"
+                showPasswordToggle={true}
+                error={
+                  typeof errors.confirmPassword?.message === "string"
+                    ? errors.confirmPassword.message
+                    : "Password confirmation does not match the password."
+                }
+                {...register("confirmPassword")}
+              />
+
+              {/* Sign Up Button */}
+              <PrimaryButton type="submit" loading={isLoading}>
+                Reset
+              </PrimaryButton>
+            </form>
+          </div>
+        </div>
       </div>
-
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 w-full">
-        {/* Password Input */}
-        <CustomInput
-          id="password"
-          type="password"
-          label="Password"
-          placeholder="••••••••••"
-          showPasswordToggle={true}
-          error={errors.password?.message}
-          {...register("password")}
-        />
-
-        {/* Confirm Password Input */}
-        <CustomInput
-          id="confirmPassword"
-          type="password"
-          label="Confirm Password"
-          placeholder="••••••••••"
-          showPasswordToggle={true}
-          error={
-            typeof errors.confirmPassword?.message === "string"
-              ? errors.confirmPassword.message
-              : "Password confirmation does not match the password."
-          }
-          {...register("confirmPassword")}
-        />
-
-        {/* Sign Up Button */}
-        <PrimaryButton type="submit" loading={isLoading}>
-          Reset
-        </PrimaryButton>
-      </form>
-    </div>
+    </Container>
   );
 }
