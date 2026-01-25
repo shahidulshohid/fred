@@ -11,6 +11,8 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import * as z from "zod";
 import AuthSide from "./AuthSide";
+import Link from "next/link";
+import { GoArrowLeft } from "react-icons/go";
 
 // Define Zod schema for validation
 const formSchema = z
@@ -52,24 +54,26 @@ export default function ResetPasswordPage() {
   });
   console.log(userId, token);
   const onSubmit = async (data: FormValues) => {
-    try {
-      const response = await resetPassword({
-        userId,
-        password: data.password,
-        token,
-      }).unwrap();
+    console.log(data)
+    router.push("/signIn");
+    // try {
+    //   const response = await resetPassword({
+    //     userId,
+    //     password: data.password,
+    //     token,
+    //   }).unwrap();
 
-      if (response?.success) {
-        console.log("Password reset successfully");
-        toast.success("Password reset successfully");
-        router.push("/signIn");
-      } else {
-        console.error("Failed to reset password");
-      }
-    } catch (error: any) {
-      console.error("Error:", error);
-      toast.error(error?.data?.message || "Failed to reset password");
-    }
+    //   if (response?.success) {
+    //     console.log("Password reset successfully");
+    //     toast.success("Password reset successfully");
+    //     router.push("/signIn");
+    //   } else {
+    //     console.error("Failed to reset password");
+    //   }
+    // } catch (error: any) {
+    //   console.error("Error:", error);
+    //   toast.error(error?.data?.message || "Failed to reset password");
+    // }
   };
 
   const togglePasswordVisibility = () => {
@@ -82,12 +86,17 @@ export default function ResetPasswordPage() {
         <AuthSide />
         <div className="md:col-span-2 flex items-center justify-center px-6">
           <div className="max-w-[540px] lg:w-[540px] h-auto mx-auto bg-[#FFF] p-6 rounded-2xl border border-[#6E51E01A] shadow-[0_0_20px_0_rgba(94,95,224,0.1)]">
-            <div className="flex flex-col items-center mb-8">
-              <h1 className="text-2xl font-bold mb-2">Change New Password!!</h1>
-              <p className="text-gray-500 text-sm text-center">
-                Welcome to Website Name <br />
-                Enter a different password with the previous!
+            <div className="flex flex-col mt-8">
+              <div className="flex items-center gap-4">
+                <Link href="/otp" className="mb-4">
+                  <GoArrowLeft size={22} className="-mt-2 text-[#64748B]" />
+                </Link>
+                <h3 className="font-bold text-3xl mb-6 text-[#2D2D2D]">Enter OTP Code</h3>
+              </div>
+              <p className="text-gray-500 text-[16px]">
+                Please enter the 6-digit verification code sent to your email.
               </p>
+              <p className="my-3 text-[#2D2D2D] text-[16px]">OTP</p>
             </div>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 w-full">
@@ -118,9 +127,7 @@ export default function ResetPasswordPage() {
               />
 
               {/* Sign Up Button */}
-              <PrimaryButton type="submit" loading={isLoading}>
-                Reset
-              </PrimaryButton>
+              <PrimaryButton type="submit" loading={isLoading} text="Reset Password" />
             </form>
           </div>
         </div>

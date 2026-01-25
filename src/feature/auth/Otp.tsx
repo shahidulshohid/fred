@@ -139,7 +139,7 @@ export default function OtpVerification() {
       .replace(/\D/g, ""); // only digits
 
     // Only allow exactly 4 digits
-    if (pastedData.length === 4) {
+    if (pastedData.length === 6) {
       pastedData.split("").forEach((digit, index) => {
         setValue(`otp.${index}`, digit);
         if (inputRefs.current[index]) {
@@ -172,14 +172,14 @@ export default function OtpVerification() {
               <p className="my-3 text-[#2D2D2D] text-[16px]">OTP</p>
             </div>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-              <div className="flex justify-center gap-5">
-                {[0, 1, 2, 3].map((index) => (
+              <div className="flex justify-center gap-3 md:gap-5">
+                {[0, 1, 2, 3, 4, 5].map((index) => (
                   <input
                     key={index}
                     type="text"
                     inputMode="numeric"
                     maxLength={1}
-                    className={`h-12 md:h-16 w-12 md:w-16 rounded-md border border-gray-300 text-center text-xl focus:border-primaryColor focus:outline-none focus:ring-0.5 focus:primaryColor ${activeInput === index
+                    className={`h-10 md:h-14 w-10 md:w-14 rounded-lg border border-gray-300 text-center text-xl focus:border-primaryColor focus:outline-none focus:ring-0.5 focus:primaryColor ${activeInput === index
                       ? "border-primaryColor ring-0.5 ring-primaryColor"
                       : ""
                       }`}
@@ -198,7 +198,7 @@ export default function OtpVerification() {
                 ))}
               </div>
 
-              <PrimaryButton>Submit</PrimaryButton>
+              <PrimaryButton type="submit" text="Submit" />
             </form>
 
             {/* <div className="text-center mb-3 mt-3 text-[16px] text-gray-600">
