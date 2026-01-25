@@ -1,5 +1,4 @@
-import AuthLayout from "@/feature/auth/AuthLayout";
-import AuthSide from "@/feature/auth/AuthSide";
+
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -14,6 +13,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <AuthLayout sideComponent={<AuthSide />}>{children}</AuthLayout>;
+  return (
+    <div>
+      {children}
+    </div>
+  );
 }
 

@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { toast } from "sonner";
 import * as z from "zod";
+import AuthSide from "./AuthSide";
 
 // Define Zod schema for validation
 const formSchema = z.object({
@@ -75,55 +76,75 @@ export default function SignInPage() {
 
   return (
     <Container>
-      <div className="w-full lg:min-w-[500px] ">
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 w-full">
-          {/* Email Input */}
-          <CustomInput
-            id="email"
-            type="email"
-            label="Email"
-            placeholder="georgiayoung@example.com"
-            {...register("email")}
-            error={errors.email?.message}
-          />
+      <div className="min-h-screen grid grid-cols-1 md:grid-cols-3 overflow-hidden">
 
-          {/* Password Input */}
-          <CustomInput
-            id="password"
-            type="password"
-            label="Password"
-            placeholder="••••••••••"
-            showPasswordToggle={true}
-            error={errors.password?.message}
-            {...register("password")}
-          />
+        {/* Left Side Image (1 column) */}
+        <AuthSide />
+        {/* Right Side Form (2 columns) */}
+        <div className="md:col-span-2 flex items-center justify-center px-6">
+          <div className="w-full max-w-lg">
 
-          {/* Remember Me and Forgot Password */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <input
-                id="rememberMe"
-                type="checkbox"
-                {...register("rememberMe")}
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+
+              {/* Email Input */}
+              <CustomInput
+                id="email"
+                type="email"
+                label="Email"
+                placeholder="georgiayoung@example.com"
+                {...register("email")}
+                error={errors.email?.message}
               />
-              <label
-                htmlFor="rememberMe"
-                className="ml-2 text-sm text-gray-600"
-              >
-                Remember Me
-              </label>
-            </div>
-            <Link
-              href="/forget-password"
-              className="text-sm text-red-500 hover:underline"
-            >
-              Forgot Password?
-            </Link>
+
+              {/* Password Input */}
+              <CustomInput
+                id="password"
+                type="password"
+                label="Password"
+                placeholder="••••••••••"
+                showPasswordToggle={true}
+                error={errors.password?.message}
+                {...register("password")}
+              />
+
+              {/* Remember Me + Forgot Password */}
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <input
+                    id="rememberMe"
+                    type="checkbox"
+                    {...register("rememberMe")}
+                  />
+                  <label
+                    htmlFor="rememberMe"
+                    className="ml-2 text-sm text-gray-600"
+                  >
+                    Remember Me
+                  </label>
+                </div>
+
+                <Link
+                  href="/forget-password"
+                  className="text-sm text-red-500 hover:underline"
+                >
+                  Forgot Password?
+                </Link>
+              </div>
+
+              {/* Submit Button */}
+              <PrimaryButton
+                type="submit"
+                loading={isLoading}
+                text="Sign In"
+              />
+
+            </form>
+
           </div>
-          {/* Login Button */}
-          <PrimaryButton type="submit" loading={isLoading} text="Sign In" />
-        </form>
+        </div>
+
       </div>
     </Container>
+
   );
 }

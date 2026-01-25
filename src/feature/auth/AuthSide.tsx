@@ -1,13 +1,25 @@
-import MyImage from "@/components/shared/myImage/MyImage";
+"use client";
 
-const AuthSide = () => {
+import React from "react";
+
+interface AuthSideImageProps {
+  src?: string;
+  alt?: string;
+}
+
+const AuthSide = ({
+  src = "/authImg/authLeftImg.svg",
+  alt = "Auth Image",
+}: AuthSideImageProps) => {
   return (
-    <div>
-      <MyImage
-        height={800}
-        imageSrc="/authImg/authLeftImg.svg"
-        width={800}
-      />
+    <div className="hidden md:block md:col-span-1">
+      <div className="h-screen">
+        <img
+          src={src}
+          alt={alt}
+          className="w-full h-full object-cover"
+        />
+      </div>
     </div>
   );
 };

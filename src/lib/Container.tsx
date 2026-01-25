@@ -7,7 +7,7 @@ const Container = ({
   children: React.ReactNode;
   className?: string;
 }) => {
-  return <div className={`${className} lg:px-[300px]`}>{children}</div>;
+  return <div className={`${className}`}>{children}</div>;
 };
 
 export default Container;
