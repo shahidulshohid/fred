@@ -8,14 +8,14 @@ const Banner = () => {
   return (
     <div className=''
       style={{
-        backgroundImage: 'url("/bannerImg/navbarBgImg.svg")',
+        backgroundImage: 'url("/bannerImg/navbarBgImg.png")',
         backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundPosition: "right -13rem top -5rem",
         backgroundRepeat: "no-repeat",
       }}
     >
       <Navbar />
-      <Container className='max-w-[1200px] mx-auto'>
+      <Container className='max-w-[1200px] mx-auto bg-white lg:bg-transparent'>
         <div className="px-4 sm:px-6 lg:px-3 py-8 sm:py-12 md:py-16 grid grid-cols-1">
 
           {/* LEFT CONTENT */}

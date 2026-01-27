@@ -76,12 +76,11 @@ export default function HowItWorksSection() {
               <div className="relative bg-[#FAFAFA] border-3 border-white rounded-2xl py-6 hover:shadow-lg transition-shadow duration-300">
                 {/* Orange Button with Icon */}
                 <div className="relative inline-block mb-6">
-                  <div className='border border-l-0 border-[#CFCFCF] rounded-r-lg p-1 pl-20 bg-white'>
+                  <div className='border border-t border-r border-b border-l-0 border-[#CFCFCF] rounded-r-lg p-1 pl-20 bg-white'>
                     <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-md flex items-center gap-2 transition-colors duration-200">
                       {step.icon}
                       {step.buttonText}
                     </button>
-                    {/* Blue cursor pointer */}
                     <div className="absolute -right-3 -bottom-2">
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M5 3L19 12L12 13L8 19L5 3Z" fill="#3B82F6" stroke="#3B82F6" strokeWidth="2" />
@@ -89,7 +88,6 @@ export default function HowItWorksSection() {
                     </div>
                   </div>
                 </div>
-
                 <div className='px-3'>
                   {/* Step Number and Title */}
                   <div className="mb-4">

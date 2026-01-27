@@ -60,7 +60,7 @@ export default function ElectricianFeaturesSection() {
                 {features.map((feature, index) => (
                   <div
                     key={index}
-                    className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 shadow-sm hover:shadow-md transition-shadow duration-300"
+                    className="bg-white rounded-lg sm:rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow duration-300"
                   >
                     <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                       {/* Icon */}
