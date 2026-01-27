@@ -104,7 +104,7 @@ export default function SignUpPage() {
                     }`}
                 >
                   <Image
-                    src="/authImg/electricianImg.svg"
+                    src="/authImg/electricianImg.png"
                     alt="Electrician icon"
                     width={20}
                     height={20}
