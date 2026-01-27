@@ -4,6 +4,15 @@ import Container from "@/lib/Container";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Button } from "@/components/ui/button";
+import { IoIosMenu } from "react-icons/io";
 
 const Navbar = () => {
     const pathName = usePathname()
@@ -16,11 +25,11 @@ const Navbar = () => {
                 <Link href="/">
                     {/* Logo */}
                     <div className="flex items-center gap-3">
-                        <Image src="/nvabarImg/navbarImg.svg" width={44} height={44} alt="" />
+                        <Image src="/nvabarImg/navbarImg.svg" width={44} height={44} alt="" className="w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11" />
                         <span className="text-[#000000] font-bold text-xl -mr-4">WireQuote</span>
                     </div>
                 </Link>
-                <div className="hidden lg:flex items-center md:gap-6 lg:gap-12 text-[16px] font-medium">
+                <div className="hidden md:flex items-center md:gap-6 lg:gap-12 text-[16px] font-medium">
 
                     {[
                         { name: "Home", path: "/" },
@@ -54,18 +63,49 @@ const Navbar = () => {
 
                 {/* Right Section for large device */}
                 <div className="hidden md:flex items-center gap-2 lg:gap-3">
-
-                    {/* <Link href="/signIn" className="group">
-                        <span className="px-4 lg:px-5 py-3 rounded-full font-medium transition hover:bg-gradient-to-b from-[#DC3C3C] to-[#000000] hover:text-white text-[#2D2D2D]">
-                            Log In
-                        </span>
-                    </Link> */}
-
                     <Link href="/signUp" className="group">
-                        <span className="px-4 lg:px-5 py-3 rounded-lg bg-primary text-white">
+                        <span className="px-4 lg:px-5 py-3 rounded-lg bg-primary text-white hidden md:flex">
                             Get Started
                         </span>
                     </Link>
+                </div>
+                {/* mobile device  */}
+                <div className="md:hidden">
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <Button variant="outline" className="cursor-pointer">
+                                <IoIosMenu size={20} />
+                            </Button>
+                        </DropdownMenuTrigger>
+
+                        <DropdownMenuContent className="md:hidden -ml-16">
+
+                            <DropdownMenuItem asChild>
+                                <Link href="/">Home</Link>
+                            </DropdownMenuItem>
+
+                            <DropdownMenuItem asChild>
+                                <Link href="/how-it-works">How It Works</Link>
+                            </DropdownMenuItem>
+
+                            <DropdownMenuItem asChild>
+                                <Link href="/why-choose-us">Why Choose Us</Link>
+                            </DropdownMenuItem>
+
+                            <DropdownMenuItem asChild>
+                                <Link href="/faq">FAQ</Link>
+                            </DropdownMenuItem>
+
+                            <DropdownMenuSeparator />
+
+                            <DropdownMenuItem asChild>
+                                <Link href="/" className="text-red-500">
+                                    Log out
+                                </Link>
+                            </DropdownMenuItem>
+
+                        </DropdownMenuContent>
+                    </DropdownMenu>
                 </div>
             </Container>
         </div>
