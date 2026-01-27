@@ -1,8 +1,11 @@
+import ViewQuotesSection from '@/components/dashboard/view-quotes-section'
 import React from 'react'
 
 function ViewQuotes() {
     return (
-        <div>View-Quotes</div>
+        <div>
+            <ViewQuotesSection/>
+        </div>
     )
 }
 

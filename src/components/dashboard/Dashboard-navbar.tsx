@@ -87,7 +87,7 @@ const DashboardNavbar = () => {
                         </button>
 
                         {/* Logout Button - Desktop */}
-                        <button className="hidden md:flex items-center gap-2 text-[16px] font-medium text-[#0A0A0A] transition-all cursor-pointer">
+                        <button className="hidden md:flex items-center gap-2 text-[16px] font-medium text-[#0A0A0A] transition-all cursor-pointer hover:text-primary">
                             <LogOut size={16} strokeWidth={1.5} />
                             <span className="mb-1">Logout</span>
                         </button>
@@ -105,15 +105,16 @@ const DashboardNavbar = () => {
                             <DropdownMenuContent className="md:hidden -ml-16">
 
                                 <DropdownMenuItem asChild>
-                                    <Link href="/set-pricing">View Quotes</Link>
+                                    <Link href="/set-pricing">Set Pricing</Link>
                                 </DropdownMenuItem>
 
                                 <DropdownMenuItem asChild>
-                                    <Link href="/view-quotes">Set Quote</Link>
+                                    <Link href="/view-quotes">View Quotes</Link>
                                 </DropdownMenuItem>
 
                                 <DropdownMenuItem asChild>
-                                    <Link href="/" className="text-red-500">
+                                    <Link href="/" className="hover:text-primary">
+                                        <LogOut size={16} strokeWidth={1.5} className="hover:text-primary" />
                                         Log out
                                     </Link>
                                 </DropdownMenuItem>

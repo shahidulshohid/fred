@@ -6,6 +6,7 @@ import { Toaster } from "sonner";
 import ReduxProvider from "@/redux/Provider";
 import Loading from "@/components/Others/Loading";
 import DashboardNavbar from "@/components/dashboard/Dashboard-navbar";
+import { Separator } from "@/components/ui/separator";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({
     <html lang="en">
       <body suppressHydrationWarning={true} className={openSans.variable}>
         <DashboardNavbar />
+        <Separator className="bg-[#E5E5E5]" />
         <ReduxProvider>
           <Toaster position="top-center" expand={true} richColors />
           <Suspense fallback={<Loading />}>{children}</Suspense>
