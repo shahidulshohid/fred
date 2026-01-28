@@ -60,7 +60,7 @@ export default function ViewQuotesSection() {
   ).length;
 
   return (
-    <div className="py-10">
+    <div className="py-6">
       <Container className="max-w-[1200px] mx-auto px-6">
 
         <PageHeader

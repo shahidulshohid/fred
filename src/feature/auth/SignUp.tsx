@@ -62,7 +62,7 @@ export default function SignUpPage() {
   const onSubmit = async (data: FormValues) => {
     console.log("Form Data:", data);
 
-    (role === "Electrician") && router.push("/school-access"),
+    (role === "Electrician") && router.push("/electrician/set-pricing"),
       (role === "Customer") && router.push("/add-student")
 
     // localStorage.setItem("email", data.email);
