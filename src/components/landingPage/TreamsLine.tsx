@@ -1,5 +1,4 @@
 import Container from '@/lib/Container';
-import React from 'react';
 
 export default function TreamsLine() {
     return (

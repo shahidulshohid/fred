@@ -51,7 +51,7 @@ export default function Footer() {
                         </Link>
                     </nav>
                 </div>
-                <p className="mt-5 text-sm text-[#5C5C5C]">© 2026 WireQuote. Automated quotes for UK electricians.</p>
+                <p className="mt-5 text-sm text-center md:text-left text-[#5C5C5C]">© 2026 WireQuote. Automated quotes for UK electricians.</p>
             </Container>
         </footer>
     );

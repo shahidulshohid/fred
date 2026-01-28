@@ -99,8 +99,8 @@ const Navbar = () => {
                             <DropdownMenuSeparator />
 
                             <DropdownMenuItem asChild>
-                                <Link href="/" className="text-red-500">
-                                    Log out
+                                <Link href="/signUp" className="text-red-500">
+                                    Get Started
                                 </Link>
                             </DropdownMenuItem>
 
