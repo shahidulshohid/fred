@@ -1,6 +1,7 @@
 
 
 import Container from '@/lib/Container';
+import Image from 'next/image';
 
 export default function HowItWorksSection() {
   const steps = [
@@ -81,10 +82,8 @@ export default function HowItWorksSection() {
                       {step.icon}
                       {step.buttonText}
                     </button>
-                    <div className="absolute -right-3 -bottom-2">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M5 3L19 12L12 13L8 19L5 3Z" fill="#3B82F6" stroke="#3B82F6" strokeWidth="2" />
-                      </svg>
+                    <div className="absolute -right-2 -bottom-1">
+                      <Image src="/howItWorks/sendIcon.svg" alt='' width={30} height={30}/>
                     </div>
                   </div>
                 </div>
