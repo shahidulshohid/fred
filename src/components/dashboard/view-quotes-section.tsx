@@ -4,6 +4,8 @@ import Container from '@/lib/Container';
 import { Clock } from 'lucide-react';
 import PageHeader from './PageHeader';
 import { MdOutlineWatchLater } from "react-icons/md";
+import { useState } from 'react';
+import AcceptModal from './AcceptModal';
 
 type QuoteStatus = 'pending' | 'accepted';
 
@@ -55,6 +57,7 @@ const quoteRequests: QuoteRequest[] = [
 ];
 
 export default function ViewQuotesSection() {
+  const [showModal, setShowModal] = useState<boolean>(false);
   const pendingCount = quoteRequests.filter(
     (req) => req.status === 'pending'
   ).length;
@@ -94,12 +97,31 @@ export default function ViewQuotesSection() {
                       </span>
                     )}
 
-                    <span
-                      className={`px-3 py-1 text-sm rounded-lg text-white ${isPending ? 'bg-[#FD7C1F]' : 'bg-[#08BA23]'
-                        }`}
-                    >
-                      {isPending ? 'Pending' : 'Accepted'}
-                    </span>
+                    <div>
+                      {isPending ? (
+                        // Pending button (no click)
+                        <button
+                          className="px-3 py-1 text-sm rounded-lg text-white bg-[#FD7C1F] cursor-pointer"
+                          disabled
+                        >
+                          Pending
+                        </button>
+                      ) : (
+                        // Accepted button (clickable, opens modal) + modal
+                        <>
+                          <button
+                            className="px-3 py-1 text-sm rounded-lg text-white bg-[#08BA23] cursor-pointer"
+                            onClick={() => setShowModal(true)}
+                          >
+                            Accepted
+                          </button>
+                          <AcceptModal
+                            isOpen={showModal}
+                            onClose={() => setShowModal(false)}
+                          />
+                        </>
+                      )}
+                    </div>
 
                     <span className="text-[#5C5C5C] text-sm">
                       {request.timestamp}
@@ -124,10 +146,10 @@ export default function ViewQuotesSection() {
                 <div className="text-sm text-[#5C5C5C] mb-2">
                   Job Description
                 </div>
-                <div className="flex items-start justify-between">
+                <div className="lg:flex items-start justify-between">
                   {/* Job Description */}
                   <div>
-                    <p className="text-sm text-[#030213] font-bold">
+                    <p className="text-sm text-[#030213] font-bold mb-2 lg:mb-0">
                       {request.description}
                     </p>
                   </div>
@@ -144,6 +166,7 @@ export default function ViewQuotesSection() {
             );
           })}
         </div>
+        {/* modal  */}
       </Container>
     </div>
   );
