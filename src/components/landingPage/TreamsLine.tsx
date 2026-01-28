@@ -5,7 +5,7 @@ export default function TreamsLine() {
     return (
         <div
             style={{
-                backgroundImage: 'url("/TreamsLine/TreamsLineImg.svg")',
+                backgroundImage: 'url("/treamsLine/treamsLineImg.svg")',
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
