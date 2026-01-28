@@ -63,7 +63,7 @@ export default function SignUpPage() {
     console.log("Form Data:", data);
 
     (role === "Electrician") && router.push("/electrician/set-pricing"),
-      (role === "Customer") && router.push("/add-student")
+      (role === "Customer") && router.push("/customer/set-quote")
 
     // localStorage.setItem("email", data.email);
     // // eslint-disable-next-line @typescript-eslint/no-unused-vars

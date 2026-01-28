@@ -20,7 +20,7 @@ const DashboardNavbar = () => {
     const pathName = usePathname();
 
     // For now mock role (replace later with session / redux / context)
-    const role: UserRole = "Electrician";
+    const role: UserRole = "Customer";
 
     const menuByRole: Record<
         UserRole,
@@ -31,8 +31,8 @@ const DashboardNavbar = () => {
             { name: "View Quotes", path: "/electrician/view-quotes" },
         ],
         Customer: [
-            { name: "Set Quote", path: "/dashboard/set-quote" },
-            { name: "View Quotes", path: "/dashboard/view-quotes" },
+            { name: "Set Quote", path: "/customer/set-quote" },
+            { name: "View Quotes", path: "/customer/view-quotes" },
         ],
     };
 
