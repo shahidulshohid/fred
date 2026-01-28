@@ -14,6 +14,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { IoIosMenu } from "react-icons/io";
 
+import { Separator } from "@/components/ui/separator";
+
 type UserRole = "Customer" | "Electrician";
 
 const DashboardNavbar = () => {
@@ -127,6 +129,7 @@ const DashboardNavbar = () => {
 
                 </div>
             </Container>
+            <Separator className="bg-[#E5E5E5]" />
         </div>
     );
 };

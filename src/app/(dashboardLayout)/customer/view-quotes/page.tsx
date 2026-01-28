@@ -1,8 +1,10 @@
-import React from 'react'
+import QuotesSectionCustomer from "@/components/dashboard/view-quotes-section-customer"
 
 function ViewQuotes() {
   return (
-    <div>ViewQuotes</div>
+    <div>
+        <QuotesSectionCustomer/>
+    </div>
   )
 }
 
