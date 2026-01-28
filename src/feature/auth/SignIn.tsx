@@ -52,26 +52,29 @@ export default function SignInPage() {
   const dispatch = useDispatch();
 
   const onSubmit = async (data: FormValues) => {
-    try {
-      const response = await signIn(data).unwrap();
-      if (response?.success) {
-        if (response.data.verify) {
-          Cookies.set("token", response.data.accessToken);
-          dispatch(
-            setUser({
-              token: response.data.accessToken,
-            })
-          );
-          toast.success("Login successful");
-          router.push("/");
-        } else {
-          router.push("/otp");
-        }
-      }
-    } catch (error: any) {
-      console.log("Error during sign-in:", error);
-      return toast.error(error?.data?.message || "Login failed");
-    }
+     console.log("Form Data:", data);
+    router.push("/electrician/set-pricing")
+
+    // try {
+    //   const response = await signIn(data).unwrap();
+    //   if (response?.success) {
+    //     if (response.data.verify) {
+    //       Cookies.set("token", response.data.accessToken);
+    //       dispatch(
+    //         setUser({
+    //           token: response.data.accessToken,
+    //         })
+    //       );
+    //       toast.success("Login successful");
+    //       router.push("/");
+    //     } else {
+    //       router.push("/otp");
+    //     }
+    //   }
+    // } catch (error: any) {
+    //   console.log("Error during sign-in:", error);
+    //   return toast.error(error?.data?.message || "Login failed");
+    // }
   };
 
   return (
