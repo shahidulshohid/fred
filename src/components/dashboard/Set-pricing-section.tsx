@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import PrimaryButton from '../shared/primaryButton/PrimaryButton';
 import { useRouter } from 'next/navigation';
+import PageHeader from './PageHeader';
 
 // Zod validation schema
 const pricingSchema = z.object({
@@ -62,14 +63,7 @@ export default function SetPricingSection() {
     <div className="py-6">
       <Container className='max-w-[1200px] mx-auto'>
         {/* Header */}
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold text-[#252525] mb-1">
-            Welcome back, Rakib
-          </h1>
-          <p className="text-[#5C5C5C] text-[16px]">
-            Manage your pricing and quote requests
-          </p>
-        </div>
+        <PageHeader title='Welcome back, Rakib' subtitle='Manage your pricing and quote requests' className='px-6' />
 
         {/* Form Card */}
         <div className="p-6">
